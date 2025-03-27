@@ -1,0 +1,66 @@
+\subsection*{Entendiendo: ¿Qué es un \textit{stock} en tarjetas de crédito?}
+
+El objetivo es predecir cuántas tarjetas físicas (aún no activadas) deben fabricarse en cada periodo. Para esto, debemos tener en cuenta tres factores fundamentales:
+
+\begin{enumerate}
+	\item \textbf{Tarjetas físicas sin activar:} Son los objetos físicos que se deben tener listos para satisfacer la demanda futura. Su producción debe anticiparse al uso, pero sin caer en el exceso.
+	
+	\item \textbf{Demanda proyectada:} Depende de múltiples variables, como campañas de marketing (e.g. tarjetas temáticas), comportamiento regional y perfil de los usuarios (por edad, ingresos, historial).
+	
+	\item \textbf{Costos de sobreproducción o desabasto:} Sirven como función objetivo en la optimización. También se deben considerar costos de almacenamiento, distribución y tiempos de entrega.
+\end{enumerate}
+
+Esto nos lleva naturalmente a un problema de optimización bajo incertidumbre, con un componente predictivo fuerte (forecast) y decisiones estructurales que se prestan al modelado matemático.
+
+\vspace{0.5cm}
+
+\subsection*{Ideas: Lo sabroso}
+
+Aunque estos problemas suelen abordarse con programación lineal o heurísticas empresariales, aquí proponemos una aproximación desde geometría algebraica para capturar relaciones profundas entre variables y restricciones.
+
+\vspace{0.3cm}
+
+\textbf{1. Curvas algebraicas: restricciones geométricas (caso base).}
+
+Podemos modelar fenómenos del comportamiento de la demanda mediante una curva algebraica $\mathcal{C}_0$ definida sobre $\mathbb{R}^2$ o $\mathbb{C}^2$, donde:
+
+\[
+x_1 := \text{tiempo}, \quad x_2 := \text{tarjetas demandadas}.
+\]
+
+Las curvas de restricción —como logística, capacidad máxima o presupuesto— pueden representarse como otras curvas $\mathcal{C}_1, \mathcal{C}_2, \ldots, \mathcal{C}_n$. Las regiones óptimas se dan en las intersecciones:
+
+\[
+\mathcal{C}_0 \cap \mathcal{C}_j \quad \text{para cada } j.
+\]
+
+\textit{Ejemplo:} Si $\mathcal{C}_0$ es una cúbica ajustada a la demanda, y $\mathcal{C}_1$ es una recta de capacidad de producción, los puntos de cruce determinan zonas de saturación.
+
+\vspace{0.3cm}
+
+\textbf{2. Variedades algebraicas: espacio de factibilidad (caso multivariable).}
+
+Cuando el número de factores aumenta (por ejemplo: región, perfil, presupuesto, fechas límite), la factibilidad del sistema puede representarse como una variedad algebraica $\mathcal{V}$ en $\mathbb{A}^n_k$ (espacio afín de dimensión $n$ sobre un cuerpo $k$).
+
+\begin{itemize}
+	\item Esta variedad se define por un ideal $I \subset k[x_1, \ldots, x_n]$ generado por ecuaciones polinómicas que representan restricciones logísticas y financieras.
+	\item Sobre esta variedad, se puede optimizar una función objetivo (por ejemplo, costo total de stock) usando herramientas algebraicas en vez de cálculo.
+\end{itemize}
+
+\textit{Ejemplo:} $x_1 = \text{tarjetas en CDMX}$, $x_2 = \text{tarjetas en GDL}$, $x_3 = \text{costo de producción}$. Entonces $\mathcal{V}$ sería el conjunto de soluciones a restricciones como:
+\[
+x_1 + x_2 \leq 100{,}000, \quad x_3 = 15x_1 + 12x_2.
+\]
+
+\vspace{0.3cm}
+
+\textbf{3. Geometría proyectiva: comportamiento a largo plazo.}
+
+Cuando se busca entender el crecimiento o saturación del sistema a gran escala (por ejemplo, predicciones a varios años), es útil considerar modelos en geometría proyectiva. Esto permite:
+
+\begin{itemize}
+	\item Analizar comportamientos “en el infinito” y crecimiento asintótico usando proyectivización de curvas y variedades.
+	\item Trabajar con modelos homogéneos (polinomios con grados bien definidos) para entender cómo escalan distintas variables.
+\end{itemize}
+
+\textit{Ejemplo:} Si la demanda se modela como un polinomio homogéneo $f(x, y, z)$ en coordenadas proyectivas, se puede estudiar la dirección dominante de crecimiento y su relación con otras restricciones proyectivas.
